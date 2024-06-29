@@ -11,18 +11,21 @@ export default class UsersController {
 
     if (!email) {
       res.status(400).json({ error: 'Missing email' });
+      return;
     }
 
     if (!password) {
       res.status(400).json({ error: 'Missing password' });
+      return;
     }
     const user = await (await dbClient.db.collection('users')).findOne({ email });
 
     if (user) {
       res.status(400).json({ error: 'already exist' });
+      return;
     }
 
-    const insertInfo = await (await dbClient.db.collection('users'))
+    const insertInfo = await dbClient.db.collection('users')
       .insertOne({ email, password: sha1(password) });
     const userId = insertInfo.insertedId.toString();
 
@@ -33,6 +36,8 @@ export default class UsersController {
   static async getMe(req, res) {
     const { user } = req;
 
-    res.status(200).json({ email: user.email, id: user._id.toString() });
+    if (!user) {
+      res.status(200).json({ email: user.email, id: user._id.toString() });
+    }
   }
 }
