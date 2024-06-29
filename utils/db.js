@@ -11,9 +11,9 @@ class DBClient {
     const options = { useUnifiedTopology: true };
     MongoClient.connect(url, options, (error, client) => {
       if (error) {
-        console.error(error.message);
+        console.log(error.message);
         this.db = false;
-        process.exit(1);
+        return;
       }
       this.db = client.db(DB_DATABASE);
       this.users = this.db.collection('users');
