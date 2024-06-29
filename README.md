@@ -33,7 +33,7 @@ The objective is to build a simple platform to upload and view files:
 | 0. Redis utils               | [utils/redis.js](./utils/redis.js)                                                                                |
 | 1. MongoDB utils             | [utils/db.js](./utils/db.js)                                                                                      |
 | 2. First API                 | [server.js,routes/index.js,controllers/AppController.js](./server.js,./routes/index.js,controllers/AppController) |
-| 3. Create a new user         | [SOON](./)                                                                                                        |
+| 3. Create a new user         | [utils/,routes/index.js,controllers/UsersController.js](./utils/,routes/index.js,controllers/UsersController.js)  |
 | 4. Authenticate a user       | [SOON](./)                                                                                                        |
 | 5. First file                | [SOON](./)                                                                                                        |
 | 6. Get and list file         | [SOON](./)                                                                                                        |
