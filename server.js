@@ -6,8 +6,7 @@ const PORT = process.env.PORT || 5000;
 // Init the Express application
 const app = express();
 
-// Routes
-Routes(app);
+// Load all routes from routes/index.js
 app.use('/', Routes);
 
 // Start the server
