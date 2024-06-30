@@ -28,17 +28,17 @@ The objective is to build a simple platform to upload and view files:
 
 ## Tasks
 
-| Task                         | File                                                                                                              |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| 0. Redis utils               | [utils/redis.js](./utils/redis.js)                                                                                |
-| 1. MongoDB utils             | [utils/db.js](./utils/db.js)                                                                                      |
-| 2. First API                 | [server.js,routes/index.js,controllers/AppController.js](./server.js,./routes/index.js,controllers/AppController) |
-| 3. Create a new user         | [utils/,routes/index.js,controllers/UsersController.js](./utils/,routes/index.js,controllers/UsersController.js)  |
-| 4. Authenticate a user       | [SOON](./)                                                                                                        |
-| 5. First file                | [SOON](./)                                                                                                        |
-| 6. Get and list file         | [SOON](./)                                                                                                        |
-| 7. File publish/unpublish    | [SOON](./)                                                                                                        |
-| 8. File data                 | [SOON](./)                                                                                                        |
-| 9. Image Thumbnails          | [SOON](./)                                                                                                        |
-| 10. Tests!                   | [SOON](./)                                                                                                        |
-| 11. New user - welcome email | [SOON](./)                                                                                                        |
+| Task                         | File                                                                                                                                                                         |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 0. Redis utils               | [utils/redis.js](./utils/redis.js)                                                                                                                                           |
+| 1. MongoDB utils             | [utils/db.js](./utils/db.js)                                                                                                                                                 |
+| 2. First API                 | [server.js,routes/index.js,controllers/AppController.js](./server.js,./routes/index.js,controllers/AppController)                                                            |
+| 3. Create a new user         | [utils/,routes/index.js,controllers/UsersController.js](./utils/,routes/index.js,controllers/UsersController.js)                                                             |
+| 4. Authenticate a user       | [utils/,routes/index.js,controllers/UsersController.js,controllers/AuthController.js](./utils/,routes/index.js,controllers/UsersController.js,controllers/AuthController.js) |
+| 5. First file                | [utils/,routes/index.js,controllers/FilesController.js](./utils/,routes/index.js,controllers/FilesController.js)                                                             |
+| 6. Get and list file         | [SOON](./)                                                                                                                                                                   |
+| 7. File publish/unpublish    | [SOON](./)                                                                                                                                                                   |
+| 8. File data                 | [SOON](./)                                                                                                                                                                   |
+| 9. Image Thumbnails          | [SOON](./)                                                                                                                                                                   |
+| 10. Tests!                   | [SOON](./)                                                                                                                                                                   |
+| 11. New user - welcome email | [SOON](./)                                                                                                                                                                   |

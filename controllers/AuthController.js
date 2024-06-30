@@ -11,13 +11,16 @@ export default class AuthController {
     }
 
     const base64Credentials = authHeader.split(' ')[1];
-    const credentials = Buffer.from(base64Credentials, 'base64').toString('ascii');
+    const credentials = Buffer.from(base64Credentials, 'base64')
+      .toString('ascii');
     const [email, password] = credentials.split(':');
 
     const hashedPassword = sha1(password);
 
     // Find the user associate to this email and with this password
-    const user = await dbClient.db.collection('users').findOne({ email, password: hashedPassword });
+    const user = await dbClient.db.collection('users').findOne({
+      email, password: hashedPassword,
+    });
     if (!user) {
       return res.status(401).json({ error: 'Unauthorized' });
     }
