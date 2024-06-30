@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 5000;
 // Init the Express application
 const app = express();
 
-Routes(app);
+app.use('/', Routes);
 
 // Start the server
 app.listen(PORT, () => {
