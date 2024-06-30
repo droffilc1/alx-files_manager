@@ -23,4 +23,4 @@ router.get('/connect', AuthController.getConnect);
 // GET /disconnect => AuthController.getDisconnect
 router.get('/disconnect', AuthController.getDisconnect);
 
-module.exports = router;
+export default router;
