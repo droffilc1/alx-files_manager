@@ -37,8 +37,8 @@ The objective is to build a simple platform to upload and view files:
 | 4. Authenticate a user       | [utils/,routes/index.js,controllers/UsersController.js,controllers/AuthController.js](./utils/,routes/index.js,controllers/UsersController.js,controllers/AuthController.js) |
 | 5. First file                | [utils/,routes/index.js,controllers/FilesController.js](./utils/,routes/index.js,controllers/FilesController.js)                                                             |
 | 6. Get and list file         | [utils/,routes/index.js,controllers/FilesController.js](./utils/,routes/index.js,controllers/FilesController.js)                                                             |
-| 7. File publish/unpublish    | [SOON](./)                                                                                                                                                                   |
-| 8. File data                 | [SOON](./)                                                                                                                                                                   |
+| 7. File publish/unpublish    | [utils/,routes/index.js,controllers/FilesController.js](./utils/,routes/index.js,controllers/FilesController.js)                                                             |
+| 8. File data                 | [utils/,routes/index.js,controllers/FilesController.js](./utils/,routes/index.js,controllers/FilesController.js)                                                             |
 | 9. Image Thumbnails          | [SOON](./)                                                                                                                                                                   |
 | 10. Tests!                   | [SOON](./)                                                                                                                                                                   |
 | 11. New user - welcome email | [SOON](./)                                                                                                                                                                   |
