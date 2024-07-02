@@ -1,3 +1,4 @@
+import Bull from 'bull';
 import { ObjectId } from 'mongodb';
 import { v4 as uuidv4 } from 'uuid';
 import fs from 'fs';
@@ -5,6 +6,8 @@ import mime from 'mime-types';
 import path from 'path';
 import dbClient from '../utils/db';
 import redisClient from '../utils/redis';
+
+const fileQueue = new Bull('fileQueue');
 
 export default class FilesController {
   static async postUpload(req, res) {
@@ -34,7 +37,7 @@ export default class FilesController {
       return res.status(400).json({ error: 'Missing data' });
     }
 
-    if (parentId !== 0) {
+    if (parentId) {
       const parentFile = await dbClient.db.collection('files')
         .findOne({ _id: new ObjectId(parentId) });
       if (!parentFile) {
@@ -65,16 +68,22 @@ export default class FilesController {
 
       try {
         fs.writeFileSync(localPath, decodedData);
-        fileDocument.localPath = localPath;
       } catch (err) {
-        console.error('Error writing file:', err);
         return res.status(500).json({ error: 'Internal Server Error' });
       }
+      fileDocument.localPath = localPath;
     }
 
     try {
       const result = await dbClient.db.collection('files').insertOne(fileDocument);
       fileDocument.id = result.insertedId;
+
+      if (type === 'image') {
+        fileQueue.add({
+          userId,
+          field: fileDocument.id,
+        });
+      }
 
       return res.status(201).json(fileDocument);
     } catch (err) {
@@ -191,6 +200,8 @@ export default class FilesController {
 
   static async getFile(req, res) {
     const { id } = req.params;
+    const { size } = req.query;
+
     if (!ObjectId.isValid(id)) {
       return res.status(400).json({ error: 'Invalid ID' });
     }
@@ -200,17 +211,16 @@ export default class FilesController {
       return res.status(404).json({ error: 'Not found' });
     }
 
-    const token = req.headers['x-token'];
-    const userId = token ? await redisClient.get(`auth_${token}`) : null;
-
-    if (!file.isPublic) {
-      if (!userId || !file.userId.equals(new ObjectId(userId))) {
-        return res.status(404).json({ error: 'Not found' });
-      }
-    }
-
     if (file.type === 'folder') {
       return res.status(400).json({ error: "A folder doesn't have content" });
+    }
+
+    let filePath = file.localPath;
+    if (size) {
+      if (!['500', '250', '100'].includes(size)) {
+        return res.status(400).json({ error: 'Invalid size parameter' });
+      }
+      filePath = `${filePath}_${size}`;
     }
 
     if (!fs.existsSync(file.localPath)) {

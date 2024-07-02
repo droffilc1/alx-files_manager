@@ -39,6 +39,6 @@ The objective is to build a simple platform to upload and view files:
 | 6. Get and list file         | [utils/,routes/index.js,controllers/FilesController.js](./utils/,routes/index.js,controllers/FilesController.js)                                                             |
 | 7. File publish/unpublish    | [utils/,routes/index.js,controllers/FilesController.js](./utils/,routes/index.js,controllers/FilesController.js)                                                             |
 | 8. File data                 | [utils/,routes/index.js,controllers/FilesController.js](./utils/,routes/index.js,controllers/FilesController.js)                                                             |
-| 9. Image Thumbnails          | [SOON](./)                                                                                                                                                                   |
+| 9. Image Thumbnails          | [utils/,controllers/FilesController.js,worker.js](./utils/,controllers/FilesController.js,worker.js)                                                                         |
 | 10. Tests!                   | [SOON](./)                                                                                                                                                                   |
 | 11. New user - welcome email | [SOON](./)                                                                                                                                                                   |

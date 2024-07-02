@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 // Middleware to parse JSON request bodies
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
 
 // Load all routes from routes/index.js
 app.use('/', Routes);
