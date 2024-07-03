@@ -17,3 +17,5 @@ app.listen(PORT, () => {
   console.log(`Server running http://localhost:${PORT}`);
   console.log('Press CTRL+C to stop server');
 });
+
+module.exports = app;

@@ -2,6 +2,7 @@ import { ObjectId } from 'mongodb';
 import sha1 from 'sha1';
 import dbClient from '../utils/db';
 import redisClient from '../utils/redis';
+import userQueue from '../worker';
 
 export default class UsersController {
   static async postNew(req, res) {
@@ -39,6 +40,10 @@ export default class UsersController {
         email: result.ops[0].email,
         id: result.insertedId,
       };
+
+      // Add a job to the Bull queue for sending the welcome email
+      await userQueue.add({ userId: newUser.id });
+
       res.status(201).json(newUser);
     } catch (err) {
       res.status(500).json(err);
